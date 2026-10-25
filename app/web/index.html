@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI HYSYS 反应工程工作台</title>
+  <meta name="description" content="从自然语言需求到可追溯 Aspen HYSYS 案例的本地建模工作台">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">AH</span><div><strong>AI HYSYS</strong><small>反应工程工作台</small></div></div>
+    <div id="connection-status" class="status-pill" aria-live="polite">正在检查服务…</div>
+  </header>
+
+  <main class="layout">
+    <aside class="rail" aria-label="工作流程">
+      <p class="eyebrow">WORKFLOW</p>
+      <ol>
+        <li class="active">描述需求</li><li>审查规格</li><li>运行 HYSYS</li><li>核验结果</li>
+      </ol>
+      <div class="source-note"><strong>数据原则</strong><p>只有真实 HYSYS 返回的数据才标记为正式结果；测试数据会显示醒目标识。</p></div>
+    </aside>
+
+    <div class="workspace">
+      <section class="hero">
+        <p class="eyebrow">NATIVE · LOCAL · TRACEABLE</p>
+        <h1>把反应需求，变成<br><em>可核验的 HYSYS 案例</em></h1>
+        <p>先由 AI 提取建模规格，再由确定性规则选择反应器。每项假设、单位和生成文件都有记录。</p>
+      </section>
+
+      <section class="panel input-panel" aria-labelledby="request-heading">
+        <div class="panel-heading"><div><span class="step">01</span><h2 id="request-heading">自然语言需求</h2></div><span class="hint">请写明组分、流量、温压和已知反应信息</span></div>
+        <textarea id="modeling-request" rows="8" placeholder="例如：使用 Peng-Robinson 物性方法，模拟甲苯歧化……"></textarea>
+        <div class="examples">
+          <button type="button" class="chip" data-example="reforming">填入：甲烷蒸汽重整</button>
+          <button type="button" class="chip" data-example="toluene">填入：甲苯歧化</button>
+        </div>
+        <div class="actions"><button id="parse-button" class="primary" type="button">解析并生成规格</button><span id="parse-message" role="status"></span></div>
+      </section>
+
+      <section id="spec-review" class="panel" aria-labelledby="review-heading">
+        <div class="panel-heading"><div><span class="step">02</span><h2 id="review-heading">规格审查</h2></div><span id="decision-badge" class="badge">等待解析</span></div>
+        <div id="issues" class="notice">解析后将在这里列出缺失信息、工程假设和反应器选择理由。</div>
+        <textarea id="spec-json" class="code-view" rows="16" spellcheck="false" aria-label="可编辑结构化建模规格" placeholder="尚无规格"></textarea>
+        <div class="actions review-actions">
+          <button id="confirm-button" class="secondary" type="button" disabled>确认全部假设</button>
+          <button id="run-button" class="primary" type="button" disabled>校验并运行 HYSYS</button>
+        </div>
+      </section>
+
+      <section id="progress" class="panel" aria-labelledby="progress-heading">
+        <div class="panel-heading"><div><span class="step">03</span><h2 id="progress-heading">运行进度</h2></div><span id="run-state" class="badge muted">等待任务</span></div>
+        <div class="timeline"><div>连接 HYSYS</div><div>构建案例</div><div>求解</div><div>读取与校验</div></div>
+        <div id="run-progress" class="notice">规格通过后将自动进入后台串行 HYSYS 队列。</div>
+      </section>
+
+      <section id="result" class="panel" aria-labelledby="result-heading">
+        <div class="panel-heading"><div><span class="step">04</span><h2 id="result-heading">模拟结果</h2></div><span class="badge muted">等待 HYSYS</span></div>
+        <div id="result-body" class="empty-state">真实案例完成后，这里将展示收敛状态、物流、组成、热负荷和独立衡算。</div>
+        <div id="result-downloads" class="actions" aria-label="结果下载"></div>
+      </section>
+
+      <section id="history" class="panel" aria-labelledby="history-heading">
+        <div class="panel-heading"><div><span class="step">05</span><h2 id="history-heading">运行历史</h2></div><button id="refresh-history" class="text-button" type="button">刷新</button></div>
+        <div id="history-list" class="history-list"><p class="empty-state">暂无运行记录</p></div>
+      </section>
+    </div>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

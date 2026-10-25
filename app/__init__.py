@@ -1,0 +1,2 @@
+"""AI HYSYS Web application."""
+
