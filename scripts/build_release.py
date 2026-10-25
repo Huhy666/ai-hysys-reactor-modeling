@@ -9,12 +9,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     paths = []
-    extensions = {".py", ".ps1", ".html", ".js", ".css", ".md"}
+    extensions = {".py", ".ps1", ".html", ".js", ".css", ".md", ".pdf"}
     for directory in ("app", "scripts", "tests", "docs"):
         paths.extend(path for path in (ROOT / directory).rglob("*")
                      if path.is_file() and path.suffix in extensions
                      and (directory != "docs" or path.name in {
-                         "report.md", "demo-script.md",
+                         "report.md", "report.pdf", "demo-script.md",
                          "remote-acceptance.md", "conversion-readback.md"
                      })
                      and "__pycache__" not in path.parts)
