@@ -1,11 +1,20 @@
-# 甲苯转化率未达标：读取已保存案例
+# 已保存案例的诊断读回
 
-记录的输入符合原要求：10000 kg/h甲苯、380℃、2500 kPa绝压、50%总转化率、三种二甲苯等选择性。此次超时只说明读回甲苯出口流量不符合校验目标，现有错误没有提供实际偏差，不能据此归因于反应排序或数值精度。
+[返回问题排查](troubleshooting.md)
 
-将诊断补丁解压到原项目目录，关闭已结束的旧验收窗口。双击 `inspect_conversion_case.cmd`。脚本自动找到最近一次因转化率不符而失败且已保存conversion.hsc的任务，复制案例到远程临时目录，暂停副本求解并读取已有数据，不重建反应器、不调用AI、不再次等待五分钟。读取结束后只关闭临时副本。
+转化率未达标时，先读取实际流量与反应配置，不直接归因于排序或数值精度。
 
-结果写回该任务目录下 `case-readback.json`。请发送该文件内容，重点查看conversion_checks、database_component_order和attached_reactions。包含实际进出口甲苯流量、目标与实际转化率、两相产品数组及已挂接的反应系数。
+## 使用方法
 
-如果脚本未找到案例，不要随意选基础案例代替；请检查原任务目录是否保留conversion.hsc。若读取失败，请提供窗口的完整错误。
+在原工作站项目中双击inspect_conversion_case.cmd。工具查找最近一次转化率不符且已保存conversion.hsc的失败任务，将案例复制到本地临时目录，暂停副本求解并读回已有数据。不会重新解析AI或重建反应器；结束时只关闭临时副本。
 
-此补丁还会使后续求解超时自动保存solver-diagnostics.json，并在错误中写出实际流量；没有放宽转化率容差或把失败改成成功。本地220项非HYSYS测试通过，诊断工具仍需在远程V15上执行验证。
+结果写入该任务的case-readback.json，重点检查：
+
+- conversion_checks：基准组分实际进出口、目标及实际转化率。
+- array_component_order_used与database_component_order：组分顺序。
+- attached_reactions：基准、反应计量及转化率系数。
+- reactor_controls：可用控制成员及读回。
+
+若找不到案例，检查任务目录是否保留conversion.hsc，不以基础案例替代。后续求解超时会尝试保存solver-diagnostics.json及部分案例，是否存在取决于失败位置。
+
+保留原记录，不修改容差或伪造结果使任务通过。输出文件可能包含输入和路径，分享前检查内容。

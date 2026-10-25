@@ -9,21 +9,27 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     paths = []
-    extensions = {".py", ".ps1", ".html", ".js", ".css", ".md", ".pdf"}
+    extensions = {".py", ".ps1", ".html", ".js", ".css", ".md", ".pdf", ".svg"}
     for directory in ("app", "scripts", "tests", "docs"):
         paths.extend(path for path in (ROOT / directory).rglob("*")
                      if path.is_file() and path.suffix in extensions
                      and (directory != "docs" or path.name in {
                          "report.md", "report.pdf", "demo-script.md",
-                         "remote-acceptance.md", "conversion-readback.md"
+                         "remote-acceptance.md", "conversion-readback.md",
+                         "getting-started.md", "architecture.md", "web-demo.md",
+                         "api.md", "validation.md", "troubleshooting.md",
+                         "project-banner.svg",
                      })
                      and "__pycache__" not in path.parts)
     paths.extend(ROOT / name for name in (
         "README.md", "pyproject.toml", ".env.example", ".gitignore",
+        "CONTRIBUTING.md", ".editorconfig",
         "run_toluene_check.cmd", "run_full_acceptance.cmd",
         "run_deadline_acceptance.cmd", "inspect_conversion_case.cmd",
         "start_web.cmd", "run_generalization.cmd",
     ))
+    paths.extend(path for path in (ROOT / ".github").rglob("*")
+                 if path.is_file() and path.suffix in {".md", ".yml"})
     output = ROOT / "dist" / (
         "ai-hysys-remote-update-" + datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ") + ".zip"
     )

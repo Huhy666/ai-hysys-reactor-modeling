@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="310" viewBox="0 0 1280 310" role="img" aria-labelledby="title desc">
+  <title id="title">AI HYSYS Reactor Modeling</title>
+  <desc id="desc">Natural language specifications, engineering decisions and verifiable HYSYS simulation. Architecture illustration, not a simulation output.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#294d4c" stroke-width="0.6"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c4df85"/></marker>
+  </defs>
+  <rect width="1280" height="310" rx="18" fill="#102d2e"/>
+  <path d="M680 0H1262Q1280 0 1280 18V292Q1280 310 1262 310H680Z" fill="url(#grid)"/>
+  <text x="54" y="57" font-family="Segoe UI,Arial,sans-serif" font-size="12" letter-spacing="3" fill="#b9d28e">REACTION ENGINEERING WORKBENCH</text>
+  <text x="50" y="127" font-family="Georgia,serif" font-size="54" fill="#fcfaf3">AI HYSYS</text>
+  <text x="53" y="172" font-family="Segoe UI,Arial,sans-serif" font-size="28" fill="#fcfaf3">Reactor Modeling</text>
+  <text x="54" y="216" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#b0c9c7">Natural language. Engineering rules. Real simulation.</text>
+  <text x="54" y="266" font-family="Consolas,monospace" font-size="12" fill="#81a8a4">SPECIFICATION  /  SOLVER  /  VERIFICATION</text>
+  <g fill="none" stroke="#c4df85" stroke-width="2">
+    <path d="M755 156H910" marker-end="url(#arrow)"/>
+    <path d="M966 108V81H1155" marker-end="url(#arrow)"/>
+    <path d="M966 214V240H1155" marker-end="url(#arrow)"/>
+    <rect x="912" y="105" width="108" height="112" rx="43" fill="#173b3a"/>
+    <path d="M912 146H1020M912 179H1020" stroke="#557f77"/>
+    <path d="M966 122V200" stroke-dasharray="4 5" stroke="#95bca4"/>
+  </g>
+  <g font-family="Consolas,monospace" font-size="12" fill="#c0d5d1">
+    <text x="756" y="138">FEED</text><text x="1060" y="66">PRODUCTS</text>
+    <text x="1060" y="265">ARTIFACTS</text><text x="912" y="285">HYSYS V15</text>
+    <text x="770" y="45" fill="#789f99">SCHEMATIC / ARCHITECTURE</text>
+  </g>
+</svg>
