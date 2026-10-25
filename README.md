@@ -17,7 +17,7 @@
 
 已实现：中文工作台、结构化AI抽取、五类反应器判断规则、缺失信息和假设确认、串行STA执行、历史保存、JSON/CSV/HYSYS导出、Conversion和Equilibrium执行。
 
-仍待完成的交付检查：网页端重新演练、额外反应实机验证、重启演练、录屏、GitHub仓库及AI会话导出。Gibbs/CSTR/PFR目前只有判断规则，尚无真实执行支持。不得宣称完整实现了这三类反应器。
+仍待完成的交付检查：网页端重新演练、额外反应实机验证、重启演练、录屏及AI会话导出。Gibbs/CSTR/PFR目前只有判断规则，尚无真实执行支持。不得宣称完整实现了这三类反应器。
 
 [交付清单](docs/delivery-checklist.md) · [演示脚本](docs/demo-script.md) · [技术报告](docs/report.md) · [历史排错记录](docs/implementation-history.md)
 
@@ -129,3 +129,5 @@ $env:HYSYS_INTEGRATION_ENABLED="true"
 - 仅关闭应用明确拥有的 HYSYS 实例；
 - Fake 适配器只用于自动化测试，不能在生产模式返回结果；
 - 结果只有在来源为 `hysys`、HYSYS 报告收敛且独立衡算通过后，才能显示为成功。
+
+源码仓库：https://github.com/Huhy666/ai-hysys-reactor-modeling （main 分支已上传）。
