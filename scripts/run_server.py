@@ -10,10 +10,12 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from app.config import Settings  # noqa: E402
+from app.runtime import source_build_id  # noqa: E402
 
 
 def main() -> None:
     settings = Settings()
+    print(f"Project: {PROJECT_ROOT}\nSource build: {source_build_id()}", flush=True)
     uvicorn.run(
         "app.main:app",
         host=settings.app_host,

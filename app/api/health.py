@@ -3,10 +3,16 @@ import json
 from fastapi import APIRouter
 
 from app.config import Settings
+from app.runtime import runtime_identity
 
 
 def create_health_router(settings: Settings) -> APIRouter:
     router = APIRouter()
+    startup_identity = runtime_identity()
+
+    @router.get("/api/runtime")
+    def get_runtime() -> dict[str, str]:
+        return dict(startup_identity)
 
     def hysys_status() -> dict[str, str]:
         path = settings.hysys_probe_result_path

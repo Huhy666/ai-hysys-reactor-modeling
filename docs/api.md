@@ -6,6 +6,7 @@
 
 | 方法 | 路径 | 用途 |
 |---|---|---|
+| GET | /api/runtime | 启动时源文件版本与时间，不含配置或密钥 |
 | GET | /api/health | 配置及已保存探针状态 |
 | POST | /api/specs/parse | 自然语言提取草稿 |
 | POST | /api/specs/prepare | 校验、选择及归一化 |

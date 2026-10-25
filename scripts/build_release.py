@@ -18,6 +18,7 @@ def main():
                          "remote-acceptance.md", "conversion-readback.md",
                          "getting-started.md", "architecture.md", "web-demo.md",
                          "api.md", "validation.md", "troubleshooting.md",
+                         "workstation-update.md",
                          "project-banner.svg",
                      })
                      and "__pycache__" not in path.parts)

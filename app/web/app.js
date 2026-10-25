@@ -25,6 +25,13 @@ async function loadHealth() {
     const health = await request("/api/health");
     const ai = health.ai.status === "configured" ? "AI 已配置" : "AI 未配置";
     $("#connection-status").textContent = `${ai} · HYSYS ${health.hysys.status}`;
+    try {
+      const runtime = await request("/api/runtime");
+      $("#connection-status").textContent += ` · 版本 ${runtime.build_id}`;
+      $("#connection-status").title = `服务启动时间：${runtime.started_at}；更新源码后须重启服务`;
+    } catch {
+      $("#connection-status").textContent += " · 版本信息不可用";
+    }
   } catch { $("#connection-status").textContent = "服务连接失败"; }
 }
 
