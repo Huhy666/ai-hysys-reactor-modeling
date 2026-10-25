@@ -15,3 +15,18 @@ dist/
 *.log
 *.rdp
 .test-status-*/
+
+# Local reference material and development notes
+/AI化工反应器建模实战考核.md
+/AI-HYSYS-Web应用开发文档.md
+/docs/deadline-bridge.md
+/docs/delivery-checklist.md
+/docs/flow-basis-fix.md
+/docs/github-delivery.md
+/docs/implementation-history.md
+/docs/reactor-mode-fix.md
+/docs/report-outline.md
+/docs/typed-controls-fix.md
+/docs/unit-fix.md
+/docs/xylene-fix.md
+/docs/superpowers/plans/2026-10-25-ai-hysys-web-mvp.md
